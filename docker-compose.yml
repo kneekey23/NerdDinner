@@ -1,8 +1,27 @@
 version: '3.4'
 
 services:
-  nerddinner:
-    image: ${DOCKER_REGISTRY}nerddinner
-    build:
-      context: .\NerdDinner
-      dockerfile: Dockerfile
+
+  nerddinner-web:
+    image: nerd-dinner/web
+    ports:
+      - "8020:80"
+    environment:
+      - ConnectionStrings:NerdDinner=Server=nerddinner-db;Database=NerdDinner;User Id=sa;Password=AWS!
+    depends_on:
+      - nerddinner-db
+    networks:
+     - app-net
+
+  nerddinner-db:
+    image: microsoft/mssql-server-windows-express:2016-sp1
+    environment:
+     - ACCEPT_EULA=Y
+     - sa_password=AWS!
+    networks: 
+     - app-net
+    
+networks:
+  app-net:
+    external:
+      name: nat
