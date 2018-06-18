@@ -1,0 +1,45 @@
+﻿@model NerdDinner.Models.Dinner
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Dinner</h4>
+    <hr />
+    <div class="dl-horizontal">
+        <h1>
+            @Html.DisplayFor(model => model.Title)
+        </h1>
+
+        <p>
+            <strong>When:</strong>
+            @Html.DisplayFor(model => model.EventDate)
+  
+        </p>
+        <p>
+            <strong>Where:</strong>
+            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => model.Country)
+        </p>
+        <p>
+            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayFor(model => model.Description)
+        </p>
+
+
+        <p>
+            <strong>Organizer</strong>
+            @Html.DisplayFor(model => model.HostedBy)
+            @Html.DisplayFor(model => model.ContactPhone)
+        </p>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.DinnerID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>
+

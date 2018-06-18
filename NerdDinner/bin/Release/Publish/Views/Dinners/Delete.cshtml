@@ -1,0 +1,25 @@
+﻿@model NerdDinner.Models.Dinner
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<asp:Content ID="Main" ContentPlaceHolderID="MainContent" runat="server">
+
+    <h2>
+        Delete Confirmation
+    </h2>
+
+    <div>
+        <p>
+            Please confirm you want to cancel the dinner titled:
+            <i> @Html.Encode(Model.Title)? </i>
+        </p>
+    </div>
+
+    @using (Html.BeginForm()) {  
+    <input name="confirmButton" type="submit" value="Delete" />
+     } 
+
+</asp:Content>

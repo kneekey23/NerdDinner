@@ -1,0 +1,14 @@
+﻿@model NerdDinner.Models.DinnerFormViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@Html.Partial("DinnerForm")
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

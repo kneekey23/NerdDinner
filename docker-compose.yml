@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  nerddinner:
+    image: ${DOCKER_REGISTRY}nerddinner
+    build:
+      context: .\NerdDinner
+      dockerfile: Dockerfile
