@@ -1,2 +1,4 @@
 
-Scripts/* linguist-vendored
+* text=auto
+
+*.cs     diff=csharp
