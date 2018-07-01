@@ -1,4 +1,4 @@
-# **Commands**
+# **Docker Commands**
 
 1. ```bash
 docker image build -t nerd-dinner/web `
@@ -12,5 +12,15 @@ docker container run `
 3. ```bash
 $ip = docker container inspect `
   --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' app
-firefox "http://$ip"
+echo $ip
+```
+4. ```bash
+docker container rm -f app
+```
+5. ```bash
+docker-compose -f docker-compose.yml up -d
+```
+6. ```bash
+$ip = docker container inspect `
+  --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' net_monolith_nerddinner_nerddinner-web_1
 ```
