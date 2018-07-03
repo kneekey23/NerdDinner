@@ -7,17 +7,16 @@ services:
     ports:
       - "8020:80"
     environment:
-      - ConnectionStrings:NerdDinner=Server=nerddinner-db;Database=NerdDinner;User Id=sa;Password=AWS!
+      - ConnectionStrings:NerdDinner=Server=nerddinner-db;Database=NerdDinner;
     depends_on:
       - nerddinner-db
     networks:
      - app-net
 
   nerddinner-db:
-    image: microsoft/mssql-server-windows-express:2016-sp1
+    image: nerd-dinner/db
     environment:
      - ACCEPT_EULA=Y
-     - sa_password=AWS!
     networks: 
      - app-net
     
