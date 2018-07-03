@@ -25,5 +25,6 @@ $restore.SqlRestore($server); \
 $error[0]|format-list –force; \
 Remove-Item c:\backups\NerdDinner.bak -Force;
 
+EXPOSE 1433
 RUN mkdir c:\volumes
 VOLUME ["c:/volumes"]
