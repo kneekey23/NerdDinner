@@ -6,8 +6,8 @@ services:
     image: nerd-dinner/web
     ports:
       - "8020:80"
-    environment:
-      - ConnectionStrings:NerdDinnerConnectionString=Server=nerddinner-db;Database=NerdDinner;
+    env_file:
+      - connection-strings.env
     depends_on:
       - nerddinner-db
     networks:
@@ -17,8 +17,6 @@ services:
     image: nerd-dinner/db
     ports:
       - "1433:1433"
-    environment:
-     - ACCEPT_EULA=Y
     networks: 
      - app-net
     
