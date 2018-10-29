@@ -10,11 +10,19 @@ param(
 Import-Module sqlps -disablenamechecking 
 Add-Type -Path 'C:\Program Files\Microsoft SQL Server\140\SDK\Assemblies\Microsoft.SqlServer.Smo.dll' 
 Add-Type -Path 'C:\Program Files\Microsoft SQL Server\140\SDK\Assemblies\Microsoft.SqlServer.SmoExtended.dll' 
+ [Microsoft.SqlServer.Management.Smo.Server]$server = New-Object ('Microsoft.SqlServer.Management.Smo.Server') '.\SQLEXPRESS' 
  $RelocateData = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile('NerdDinner', 'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\NerdDinner.mdf') 
  $RelocateLog = New-Object Microsoft.SqlServer.Management.Smo.RelocateFile('NerdDinner_log', 'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\NerdDinner.ldf') 
 
-Restore-SqlDatabase -ServerInstance '.\SQLEXPRESS' -BackupFile 'c:\backups\NerdDinner.bak' -Database 'NerdDinner' -ReplaceDatabase -RelocateFile @($RelocateData,$RelocateLog)
+ if ( $null -ne $server.Databases[$db_name] ) {
+      #if exists do nothing
+    } 
+else { 
+   #else restore db from bak
+   Restore-SqlDatabase -ServerInstance '.\SQLEXPRESS' -BackupFile 'c:\backups\NerdDinner.bak' -Database 'NerdDinner' -ReplaceDatabase -RelocateFile @($RelocateData,$RelocateLog)
 Remove-Item c:\backups\NerdDinner.bak -Force
+}
+
 
 Write-Verbose 'Changing SA login credentials'
 $sqlcmd = "ALTER LOGIN sa with password='$sa_password'; ALTER LOGIN sa ENABLE;"

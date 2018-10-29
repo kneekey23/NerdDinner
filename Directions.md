@@ -29,9 +29,7 @@
 5. Test SQL db to see if it's working
 
     ```bash
-      docker container exec net_monolith_nerddinner_nerddinner-db_1 `
-      powershell `
-      "Invoke-SqlCmd -Query 'SELECT * FROM Dinners' -Database NerdDinner"
+      docker container exec nerddinner_nerddinner-db_1 powershell "Invoke-SqlCmd -Query 'SELECT * FROM Dinners' -Database NerdDinner"
     ```
 
 6. Create an ECR repository to push the images to
