@@ -23,7 +23,7 @@
 
     ```bash
       $ip = docker container inspect `
-      --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' net_monolith_nerddinner_nerddinner-web_1
+      --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' nerddinner_nerddinner-web_1
     ```
 
 5. Test SQL db to see if it's working

@@ -5,7 +5,7 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
 EXPOSE 1433
 RUN mkdir c:\volumes
 VOLUME ["c:/volumes"]
-ENV sa_password Iloveaws!
+ENV sa_password=Iloveaws!
 
 RUN mkdir c:\backups
 COPY NerdDinner.bak /backups/NerdDinner.bak
